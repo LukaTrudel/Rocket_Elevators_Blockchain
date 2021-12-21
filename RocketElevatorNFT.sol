@@ -26,16 +26,22 @@ contract NFT is ERC721Enumerable, Ownable {
   string public notRevealedUri;
   uint256 public cost = 1000000 gwei;
   uint256 public discountCost = 850000 gwei;
-  uint256 public maxSupply = 10000;
-  uint256 public maxMintAmount = 20;
+  uint256 public maxSupply = 1000;
+  uint256 public maxMintAmount = 10;
   uint256 public nftPerAddressLimit = 3;
   bool public paused = false;
   bool public revealed = false;
   bool public onlyWhitelisted = true;
+  uint public saleStart = 1640390399; //Date and time (GMT): Friday, December 24, 2021 11:59:59 PM
+  uint public saleEnd = 1640908799; //Date and time (GMT): Thursday, December 30, 2021 11:59:59 PM
   // Our Client
   address[] public whitelistedAddresses;
   mapping(address => uint256) public addressMintedBalance;
-  bool public sales = false;
+
+  // Error that describes failures.
+
+  /// The sale has already been completed.
+  error SalesCompleted();
 
   constructor(
     string memory _name,
@@ -61,25 +67,17 @@ contract NFT is ERC721Enumerable, Ownable {
     require(supply + _mintAmount <= maxSupply, "max NFT limit exceeded");
 
     if (msg.sender != owner()) {
-        if(onlyWhitelisted == true) {
-            require(isWhitelisted(msg.sender), "user is not whitelisted");
-            uint256 ownerMintedCount = addressMintedBalance[msg.sender];
-            require(ownerMintedCount + _mintAmount <= nftPerAddressLimit, "max NFT per address exceeded");
-        }
-        require(msg.value >= cost * _mintAmount, "insufficient funds");
-    }
-
-    if (msg.sender != owner()) {
-        // Owner must start the sale manually
-        if (sales) {
-            if (isWhitelisted(msg.sender)) {
-                require(msg.value >= discountCost * _mintAmount, "insufficient funds");
-            } else {
-            require(msg.value >= cost * _mintAmount, "insufficient funds");
-            }
-        } else {
-            require(msg.value >= cost * _mintAmount, "insufficient funds");
-        }
+      // Correspond to presale
+      if (block.timestamp <= saleStart) {
+        // If address is whitelisted (is a client)
+        require (isWhitelisted(msg.sender), "address not whitelisted");
+        require (msg.value >= discountCost * _mintAmount, "insufficient funds");
+      // Correspond to official sale
+      } else if (block.timestamp <= saleEnd) {
+        require (msg.value >= cost * _mintAmount, "insufficient funds");
+      } else {
+        revert SalesCompleted();
+      }
     }
     
     for (uint256 i = 1; i <= _mintAmount; i++) {
@@ -172,10 +170,6 @@ contract NFT is ERC721Enumerable, Ownable {
   function whitelistUsers(address[] calldata _users) public onlyOwner {
     delete whitelistedAddresses;
     whitelistedAddresses = _users;
-  }
-
-  function startSale(bool _saleState) public onlyOwner {
-      sales = _saleState;
   }
  
   function withdraw() public payable onlyOwner {
