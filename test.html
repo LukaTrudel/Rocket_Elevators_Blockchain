@@ -1,7 +1,24 @@
 <HTML>
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="/block.js"></script>
-
-    <button id="connectButton">CONNECT</button>
-    <button id="buyButton">BUY</button>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="/block.js"></script>
+    </head>
+    <body>
+        <button id="buyButton" class="glow-on-hover right-side" type="button">MINT</button>
+        <button id="connectButton" class="glow-on-hover right-side">CONNECT</button>
+        <h2 class="glow-on-account"><span class="showAccount"></span></h2>
+        <div class="container">
+            <div id="countdown">
+                <h1 id="headline">Countdown Presale</h1>
+              <ul>
+                <li><span id="days"></span>days</li>
+                <li><span id="hours"></span>Hours</li>
+                <li><span id="minutes"></span>Minutes</li>
+                <li><span id="seconds"></span>Seconds</li>
+              </ul>
+            </div>
+          </div>
+    </body>
 </HTML>
