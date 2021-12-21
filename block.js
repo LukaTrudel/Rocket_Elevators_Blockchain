@@ -1,12 +1,75 @@
-// var contractAddress = '';
-// var contractAbi;
-// var contract;
+var contractAddress = '0x4CfAf44258D60Df362A531CF3fA9A820B3f9FE70';
+var contractAbi = [
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+];
+
+var contract;
 
 
-var web3;
 
 $(document).ready(function() {
-   
+    
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById("connectButton").addEventListener("click", function() {
+        ConnectUserWaller();
+    });
+
+    document.getElementById("mintButton").addEventListener("click", function() {
+        ConnectToSmartContract();
+    });     
 });
 
 async function ConnectUserWaller() {
@@ -19,11 +82,16 @@ async function ConnectUserWaller() {
     connect.style.visibility = 'hidden';
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById("connectButton").addEventListener("click", function() {
-        ConnectUserWaller();
-    });
-});
+function ConnectToSmartContract() {
+    var web3 = new Web3(window.ethereum);
+    contract = new web3.eth.Contract(contractAbi, contractAddress);
+    console.log(contract);
+
+}
+
+
+
+
 
 (function () {
     const second = 1000,
@@ -59,15 +127,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
         }, 0)
     }());
-
-// async function ConnectToSmartContract() {
-//     contract = new web3.eth.Contract(contractAbi, contractAddress);
-// }
-
-function buy() {
-    if (web3 == 'undefined') {
-        alert('You need to connect you wallet.')
-        return 0;
-    }
-    alert('buying');
-}
