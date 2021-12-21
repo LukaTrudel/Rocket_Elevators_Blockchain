@@ -30,7 +30,7 @@ contract NFT is ERC721Enumerable, Ownable {
   uint256 public maxMintAmount = 10;
   uint256 public nftPerAddressLimit = 3;
   bool public paused = false;
-  bool public revealed = false;
+  // bool public revealed = false;
   bool public onlyWhitelisted = true;
   uint public saleStart = 1640390399; //Date and time (GMT): Friday, December 24, 2021 11:59:59 PM
   uint public saleEnd = 1640908799; //Date and time (GMT): Thursday, December 30, 2021 11:59:59 PM
@@ -120,7 +120,7 @@ contract NFT is ERC721Enumerable, Ownable {
       "ERC721Metadata: URI query for nonexistent token"
     );
     
-    if(revealed == false) {
+    if(block.timestamp <= saleEnd) {
         return notRevealedUri;
     }
 
@@ -131,9 +131,9 @@ contract NFT is ERC721Enumerable, Ownable {
   }
 
   //only owner
-  function reveal() public onlyOwner {
-      revealed = true;
-  }
+  // function reveal() public onlyOwner {
+  //     revealed = true;
+  // }
   
   function setNftPerAddressLimit(uint256 _limit) public onlyOwner {
     nftPerAddressLimit = _limit;
