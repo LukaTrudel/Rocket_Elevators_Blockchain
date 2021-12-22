@@ -1,10 +1,3 @@
-const HDWalletProvider = require("@truffle/hdwallet-provider");
-let myProvider = new HDWalletProvider({
-  mnemonic: {
-    phrase: "clean vacant happy wage kick neither more stove reform love frost leisure"
-  },
-  providerOrUrl: 'https://rpc-mumbai.maticvigil.com/'
-});
 
 /**
  * Use this file to configure your truffle project. It's seeded with some
@@ -43,15 +36,6 @@ module.exports = {
    */
 
   networks: {
-    matic: {
-      provider: myProvider,
-      network_id: 80001,
-      confirmations: 2,
-      timeoutBlocks: 200,
-      skipDryRun: true,
-      gas: 6000000,
-      gasPrice: 10000000000,
-    },
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
