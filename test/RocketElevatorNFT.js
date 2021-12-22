@@ -61,11 +61,7 @@ contract('NFT', function () {
             if (whitelistedAddresses[i] == _user) {
                 return true;
             }
-          }
-        
-    })
-    
-    
-
-    
+        }
+        return false;
+      })
 })
