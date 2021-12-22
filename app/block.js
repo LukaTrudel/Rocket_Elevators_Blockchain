@@ -914,18 +914,21 @@ function ConnectToSmartContract() {
     let today = new Date(),
         dd = String(today.getDate()).padStart(2, "0"),
         mm = String(today.getMonth() + 1).padStart(2, "0"),
-        yyyy = today.getFullYear(),
-        nextYear = yyyy + 1,
-        dayMonth = "09/30/",
-        birthday = dayMonth + yyyy;
+        yyyy = today.getFullYear();
+
+	var dayMonth = "12/24/";
+	var	saleDate = dayMonth + yyyy;
+	let saledate = new Date(saleDate);
     
-    today = mm + "/" + dd + "/" + yyyy;
-    if (today > birthday) {
-      birthday = dayMonth + nextYear;
+	if (today > saledate) {
+		window.onload = function() {
+			document.getElementById("headline").innerHTML = 'COUNTDOWN SALE';
+		}
+	  	saleDate = "12/31/" + yyyy;
     }
     //end
     
-    const countDown = new Date(birthday).getTime(),
+    const countDown = new Date(saleDate).getTime(),
         x = setInterval(function() {    
   
           const now = new Date().getTime(),
