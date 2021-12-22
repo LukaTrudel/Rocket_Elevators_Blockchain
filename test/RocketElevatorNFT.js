@@ -4,23 +4,68 @@ contract('NFT', function () {
     let baseURI
     let mint
     let isWhitelisted
+    let nftPerAddressLimit
+    let _limit
+    let cost
+    let _newCost
+    let maxMintAmount
+    let _newmaxMintAmount
     
+    
+    before( async () => {
+        NFT = await NFT.deployed();
+    });
 
     it('has a baseURI', async function () {
         assert.equal(await baseURI)
     })
+
     it('has a mint', async function () {
         assert.equal(await mint)
     })
-    it('has clients whitelisted', async function () {
+
+    it('has whitelisted', async function () {
         assert.equal(await isWhitelisted)
     })
-    before( async () => {
-        NFT = await NFT.deployed();
+    
+    it ("should deploy NFT properly", async() =>{
+        console.log("Address :" + NFT.address);
+        assert(NFT.address !== '');
     });
-    it ("should get the current cost ", async () =>{
+
+    it ("should get cost ", async () =>{
         const cost = await NFT.getCurrentCost();
         assert(cost != 0)
     })
+
+    it("has correct name", async () => {
+        const name = await NFT.name();
+        assert.equal(name, '');
+      });
+
+    it('confirms the limit', async () =>{
+        nftPerAddressLimit = _limit;
+    })
+
+    it('sets the cost', async () =>{
+        cost = _newCost;
+    })
+    
+    it('sets the Max Mint amount', async () =>{
+        maxMintAmount = _newmaxMintAmount;
+    })
+
+    it('whitelisted returns true', async () =>{
+        const whitelistedAddresses = []
+        for (i = 0; i < whitelistedAddresses.length; i++) {
+            if (whitelistedAddresses[i] == _user) {
+                return true;
+            }
+          }
+        
+    })
+    
+    
+
     
 })
