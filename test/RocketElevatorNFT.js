@@ -10,6 +10,8 @@ contract('NFT', function () {
     let _newCost
     let maxMintAmount
     let _newmaxMintAmount
+    let discountCost
+    let _mintAmount
     
     
     before( async () => {
@@ -63,5 +65,12 @@ contract('NFT', function () {
             }
         }
         return false;
-      })
+    })
+    it('cost not discount cost', async () =>{
+        discountCost != cost;
+    })
+
+    it('mint amount > 0', async () =>{
+        _mintAmount > 0;
+    })
 })
