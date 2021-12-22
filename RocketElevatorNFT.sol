@@ -134,6 +134,14 @@ contract NFT is ERC721Enumerable, Ownable {
   // function reveal() public onlyOwner {
   //     revealed = true;
   // }
+
+  function getCurrentCost() public view returns (uint) {
+    if (block.timestamp <= saleStart) {
+      return discountCost;
+    } else {
+      return cost;
+    }
+  }
   
   function setNftPerAddressLimit(uint256 _limit) public onlyOwner {
     nftPerAddressLimit = _limit;
