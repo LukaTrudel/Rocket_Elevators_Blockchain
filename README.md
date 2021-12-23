@@ -2,91 +2,75 @@
 
 For the purpose of the 12th week of the Codeboxx program, we created an static app connected to a smart contract on the Rinkeby network (Ethereum Testnet) and another one on the Mumbai network (Polygon Matic).
 By going on the [app](http://rocketliftblockchain.s3-website.ca-central-1.amazonaws.com/), users are able to click the connect button to connect their wallet and the mint button to mint an NFT. 
-However, it's important that the metamask network is already connected to either the Rinkeby network or the Mumbai network before clicking the mint button, as seen below.
+However, it's important that the metamask wallet is already connected to either the Rinkeby network or the Mumbai network before clicking the mint button, as seen below.
 
 - Rinkeby network
-
-
+  - <img width="268" alt="rinkeby" src="https://user-images.githubusercontent.com/67526512/147258148-74c55d7e-4a0d-4f35-8526-4a80acf118ab.PNG">
+  - Network settings
+    - Network Name: Rinkeby Test Network
+    - New RPC URL: https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
+    - Chain ID: 4
+    - Currency Symbol(Optional): ETH
+    - Block Explorer URL(Optional): https://rinkeby.etherscan.io
+  
+- Mumbai network
+  - <img width="268" alt="mumbai" src="https://user-images.githubusercontent.com/67526512/147259031-71999926-f8a0-452f-8390-a23f715862be.PNG">
+  - Network settings
+    - Network Name: Mumbai Testnet
+    - New RPC URL: https://rpc-mumbai.maticvigil.com/
+    - Chain ID: 80001
+    - Currency Symbol(Optional): MATIC
+    - Block Explorer URL(Optional): https://polygonscan.com/
+ 
+ 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+- nodejs
+- truffle
+- metamask
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+You can use npm to setup the project
 
 ```
-Give the example
+npm install
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+The tests can be run with truffle
 
 ```
-Give an example
+truffle test
 ```
+<img width="243" alt="testsReadme" src="https://user-images.githubusercontent.com/67526512/147260222-61279992-ae66-4bf0-8a6c-eaf0f915dcb1.PNG">
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+These contracts were deployed using the [Remix IDE](https://remix.ethereum.org/)
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+<img width="203" alt="remixDeploy" src="https://user-images.githubusercontent.com/67526512/147260592-1a48073f-42c9-4d04-aea6-4a4c539cabbc.PNG">
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+[AlexWallot](https://github.com/AlexWallot)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+[LukaTrudel](https://github.com/LukaTrudel)
+
+[YenXm](https://github.com/YenXm)
+
+[lemyted](https://github.com/lemyted)
+
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
