@@ -20,7 +20,7 @@ However, it's important that the metamask wallet is already connected to either 
     - New RPC URL: https://rpc-mumbai.maticvigil.com/
     - Chain ID: 80001
     - Currency Symbol(Optional): MATIC
-    - Block Explorer URL(Optional): https://polygonscan.com/
+    - Block Explorer URL(Optional): https://polygon-explorer-mumbai.chainstacklabs.com/
  
  
 ## Getting Started
