@@ -1,3 +1,4 @@
+
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -82,7 +83,7 @@ module.exports = {
 
   // Set default mocha options here, use special reporters etc.
   mocha: {
-    // timeout: 100000
+    timeout: 100000
   },
 
   // Configure your compilers

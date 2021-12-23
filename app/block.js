@@ -1,6 +1,7 @@
-var contractAddress = '0x4CfAf44258D60Df362A531CF3fA9A820B3f9FE70';
-
-var contractAbi = [
+var contractAddressEthereumRinkeby = '0xeb3928f69a8EB91dd38deC32E3bE0CC217103c5e';
+var contractAddressPolygonMumbai = '0x3FD26641251096a799e8cB36284Fbeea944DEE69';
+var contractAbi = 
+[
 	{
 		"inputs": [
 			{
@@ -503,6 +504,19 @@ var contractAbi = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "getCurrentCost",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -840,7 +854,6 @@ var contractAbi = [
 		"type": "function"
 	}
 ];
-
 var contract;
 var account;
 
@@ -858,21 +871,35 @@ async function ConnectUserWaller() {
     const showAccount = document.querySelector('.showAccount');
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     account = accounts[0];
-    console.log(accounts[0]);
     showAccount.innerHTML = account;
     const connect = document.getElementById("connectButton");
     connect.style.visibility = 'hidden';
 }
 
 function ConnectToSmartContract() {
+	var contractAddress;
     var web3 = new Web3(window.ethereum);
-    contract = new web3.eth.Contract(contractAbi, contractAddress);
-    var result = contract.methods.mint(1).send({ from: account, value: web3.utils.toWei('1000000', 'gwei')});
-	console.log(result);
+	web3.eth.net.getNetworkType().then(function(network) {
+		if (network == 'rinkeby') { 
+			console.log('rinkeby')
+			contractAddress = contractAddressEthereumRinkeby; 
+		}
 
+		if (network == 'private') { 
+			console.log('private') 
+			contractAddress = contractAddressPolygonMumbai;
+		}
+
+		console.log(contractAddress);
+		contract = new web3.eth.Contract(contractAbi, contractAddress);
+
+		contract.methods.getCurrentCost().call().then(function(cost){
+			console.log(cost)
+			var result = contract.methods.mint(1).send({ from: account, value: web3.utils.toWei(cost, 'wei')});
+			console.log(result);
+		});
+	});	
 }
-
-
 
 
 
@@ -887,18 +914,21 @@ function ConnectToSmartContract() {
     let today = new Date(),
         dd = String(today.getDate()).padStart(2, "0"),
         mm = String(today.getMonth() + 1).padStart(2, "0"),
-        yyyy = today.getFullYear(),
-        nextYear = yyyy + 1,
-        dayMonth = "09/30/",
-        birthday = dayMonth + yyyy;
+        yyyy = today.getFullYear();
+
+	var dayMonth = "12/24/";
+	var	saleDate = dayMonth + yyyy;
+	let saledate = new Date(saleDate);
     
-    today = mm + "/" + dd + "/" + yyyy;
-    if (today > birthday) {
-      birthday = dayMonth + nextYear;
+	if (today > saledate) {
+		window.onload = function() {
+			document.getElementById("headline").innerHTML = 'COUNTDOWN SALE';
+		}
+	  	saleDate = "12/31/" + yyyy;
     }
     //end
     
-    const countDown = new Date(birthday).getTime(),
+    const countDown = new Date(saleDate).getTime(),
         x = setInterval(function() {    
   
           const now = new Date().getTime(),
