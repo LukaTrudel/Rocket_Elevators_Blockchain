@@ -1,4 +1,4 @@
-var contractAddressEthereumRinkeby = "0x1E6C60a4907AD2f002e58F08E4aCFE33ca07638E";
+var contractAddressEthereumRinkeby = "0x4f7140284B91C4710d1B6e981cf17058F4D026B7";
 var contractAddressPolygonMumbai = "0x3FD26641251096a799e8cB36284Fbeea944DEE69";
 var contractAbi = [
     {
@@ -1197,25 +1197,17 @@ function ConnectToSmartContractRocketToken() {
         console.log(contractAddress);
         contract = new web3.eth.Contract(contractAbi, contractAddress);
 
-        var result = contract.methods
-            .mintWithRocketTokens(1)
-            .send({from: account});
+        var result = contract.methods.mintWithRocketTokens(1).send({ from: account });
         console.log(result);
     });
 }
 function ConnectToRocketToken() {
-    var contractAddress;
     var web3 = new Web3(window.ethereum);
-    web3.eth.net.getNetworkType().then(function (network) {
-        if (network == "rinkeby") {
-            console.log("rinkeby");
-            contractAddress = contractAddressEthereumRinkeby;
-        }
-
+    web3.eth.net.getNetworkType().then(function () {
         console.log(contractTokenAddress);
         contract = new web3.eth.Contract(tokenAbi, contractTokenAddress);
 
-        contract.methods.approve(account, 2^53).send({ from: account });
+        contract.methods.approve(account, 2 ^ 53).send({ from: account });
     });
 }
 
