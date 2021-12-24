@@ -1224,7 +1224,7 @@ function ConnectToRocketToken() {
         mm = String(today.getMonth() + 1).padStart(2, "0"),
         yyyy = today.getFullYear();
 
-    var dayMonth = "12/24/";
+    var dayMonth = "12/25/";
     var saleDate = dayMonth + yyyy;
     let saledate = new Date(saleDate);
 
