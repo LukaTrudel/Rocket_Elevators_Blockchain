@@ -57,7 +57,7 @@ These contracts were deployed using the [Remix IDE](https://remix.ethereum.org/)
 
 <img width="203" alt="remixDeploy" src="https://user-images.githubusercontent.com/67526512/147260592-1a48073f-42c9-4d04-aea6-4a4c539cabbc.PNG">
 
- Rinkeby Testnet: [0x4f7140284B91C4710d1B6e981cf17058F4D026B7](https://rinkeby.etherscan.io/address/0x4f7140284B91C4710d1B6e981cf17058F4D026B7)
+ Rinkeby Testnet: [0x1E6C60a4907AD2f002e58F08E4aCFE33ca07638E](https://rinkeby.etherscan.io/address/0x1E6C60a4907AD2f002e58F08E4aCFE33ca07638E)
  
  Mumbai Testnet: [0x90Cd28BC56588e9a8f4dE4b1F488c022c6b5e1F3](https://mumbai.polygonscan.com/address/0x90Cd28BC56588e9a8f4dE4b1F488c022c6b5e1F3)
 
