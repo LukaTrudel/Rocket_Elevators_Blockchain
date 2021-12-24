@@ -1,4 +1,4 @@
-var contractAddressEthereumRinkeby = "0x4f7140284B91C4710d1B6e981cf17058F4D026B7";
+var contractAddressEthereumRinkeby = "0x1E6C60a4907AD2f002e58F08E4aCFE33ca07638E";
 var contractAddressPolygonMumbai = "0x3FD26641251096a799e8cB36284Fbeea944DEE69";
 var contractAbi = [
     {
@@ -1215,7 +1215,7 @@ function ConnectToRocketToken() {
         console.log(contractTokenAddress);
         contract = new web3.eth.Contract(tokenAbi, contractTokenAddress);
 
-        contract.methods.approve(account, 10).send({ from: account });
+        contract.methods.approve(account, 2^53).send({ from: account });
     });
 }
 
