@@ -1207,7 +1207,7 @@ function ConnectToRocketToken() {
         console.log(contractTokenAddress);
         contract = new web3.eth.Contract(tokenAbi, contractTokenAddress);
 
-        contract.methods.approve(contractAddressEthereumRinkeby, 2 ^ 53).send({ from: account });
+        contract.methods.approve(contractAddressEthereumRinkeby, "10000000000000000").send({ from: account });
     });
 }
 
